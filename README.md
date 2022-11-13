@@ -38,4 +38,20 @@ As an api consumer,
 I want to retrieve a different set of questions depending on the type of quiz e.g. Geography Quiz or Science Quiz
 So that I can support providing different types of quiz.
 
-Good luck!
+Solution
+========
+
+As per given conditions I am continuing without assuming that questions are being statically written into the code.
+
+Introduced `AppConstants` for standardization of Questions as custom `in-memory` storage and simple `Exception Handler` for `RuntimeException`.
+
+Below are the details for APIs
+
+1) **All Questions API:** It returns the `List of strings` for all questions.
+
+2) **Validity of Answer API:** Needs `Question` and its `answer` to be sent as a `parameter`. It returns `True` or `False` after checking the correctness of the question and throws `Exception` if Question is not valid / not found ._It can be done by getting answer into the api and check on front end. BUT WILL NOT BE CONSIDERED AS GOOD PRACTICE._
+
+3) **Category Wise Question API:** Call this API by putting required `name of Category` as `Path Variable` and will get the result. `Empty List` will be returned if `category not found`.
+        
+**Note:** _I didn't put much focus on Code Tests_
+

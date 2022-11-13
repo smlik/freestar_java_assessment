@@ -1,5 +1,6 @@
 package com.stepstone.quiz.service;
 
+import com.stepstone.quiz.model.Question;
 import com.stepstone.quiz.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,19 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     public List<String> getAll() {
-        return Collections.emptyList();
+        return questionRepository.findAll();
+    }
+    
+    @Override
+    public List<String> getAllByCategory( String category ) {
+        return questionRepository.findAllByCategory(category);
+    }
+    
+    @Override
+    public Boolean validateAnswerOfQuestion(String question, String answer){
+        Question questionResult = questionRepository.findByQuestion(question)
+                .orElseThrow(() -> new RuntimeException("Question not Found"));
+        
+        return answer.equalsIgnoreCase(questionResult.getAnswer());
     }
 }

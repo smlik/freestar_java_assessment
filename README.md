@@ -41,7 +41,7 @@ So that I can support providing different types of quiz.
 Solution
 ========
 
-As per given conditions I am continuing without assuming that questions are being statically written into the code.
+As per given conditions I am assuming that questions are being statically written into the code.
 
 Introduced `AppConstants` for standardization of Questions as custom `in-memory` storage and simple `Exception Handler` for `RuntimeException`.
 
